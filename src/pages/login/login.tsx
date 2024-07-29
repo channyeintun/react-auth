@@ -25,15 +25,28 @@ const Login: React.FC = () => {
     return (
         <form className="grid columns-2 max-w-96 mx-auto gap-5 mt-20" onSubmit={onSubmit}>
             {error && <h1 className="text-red-600">{error}</h1>}
-            <label htmlFor="phone">
-                Phone:
-                <input className="bg-neutral-200" id="phone" name="phone" type="text" required />
-            </label>
-            <label htmlFor="password">
-                Password:
-                <input className="bg-neutral-200" id="password" name="password" type="password" required />
-            </label>
-            <button className="bg-slate-900 text-white" disabled={loading} type="submit">Login</button>
+            <div className="flex flex-col gap-2">
+                <label htmlFor="phone">Phone:</label>
+                <input
+                    className="bg-neutral-200"
+                    id="phone"
+                    name="phone"
+                    type="text"
+                    required />
+            </div>
+            <div className="flex flex-col gap-2">
+                <label htmlFor="password">Password:</label>
+                <input
+                    className="bg-neutral-200"
+                    id="password"
+                    name="password"
+                    type="password"
+                    required />
+            </div>
+            <button
+                className="p-2 bg-slate-900 text-white"
+                disabled={loading}
+                type="submit">Login</button>
         </form>
     )
 }

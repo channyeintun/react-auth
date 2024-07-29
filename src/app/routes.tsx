@@ -4,7 +4,8 @@ import useAuthStore from "../store/auth";
 import { useEffect } from "react";
 import { apiUtils } from "../services/utils";
 import Swal from "sweetalert2";
-import Main from "../pages/main";
+import Main from "../components/layout";
+import CurrentUser from "../pages/currentUser/currentUser";
 
 const RouteProvider = () => {
 
@@ -30,7 +31,13 @@ const RouteProvider = () => {
                 return null;
             },
             path: "/",
-            element: <Main />
+            element: <Main />,
+            children: [
+                {
+                    index: true,
+                    element: <CurrentUser />
+                }
+            ]
         },
         {
             loader: () => {
