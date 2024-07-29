@@ -1,19 +1,17 @@
 import { apiInstance } from "../utils";
 
 type loginRequest = {
-    email: string;
+    mobileNumber: string;
     password: string;
 }
 
 type loginResponse = {
-    data: {
-        token: string;
-    }
+    accessToken: string;
 }
 
-export const login = ({ email, password }: loginRequest): Promise<loginResponse> =>
-    apiInstance.post('/logistics-service/signin', {
-        email, password
+export const login = ({ mobileNumber, password }: loginRequest): Promise<loginResponse> =>
+    apiInstance.post('/auth/user/v3/login', {
+        mobileNumber, password
     }).then(res => res.data)
 
 export type loginApi = typeof login;

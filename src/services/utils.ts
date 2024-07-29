@@ -6,6 +6,10 @@ const apiInstance = axios.create({
     baseURL: API_URL,
 });
 
+apiInstance.defaults.headers["Cache-Control"] = "no-cache";
+apiInstance.defaults.headers["Pragma"] = "no-cache";
+apiInstance.defaults.headers["Expires"] = "0";
+
 export const setAPIToken = (token: string) => {
     apiInstance.defaults.headers.Authorization = `Bearer ${token}`;
 };
@@ -20,10 +24,10 @@ export function set401LogoutIntercetor(redirectCallback: () => void = () => unde
 
             if (error.response && error.response.status === 401 && originalRequest.url !== '/login') {
                 removeAPIToken();
-                redirectCallback();
                 useAuthStore.setState({
                     token: undefined,
                 });
+                redirectCallback();
             }
 
             return Promise.reject(error);
