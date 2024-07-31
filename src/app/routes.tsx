@@ -6,6 +6,7 @@ import { apiUtils } from "../services/utils";
 import Swal from "sweetalert2";
 import Main from "../components/layout";
 import CurrentUser from "../pages/currentUser/currentUser";
+import UseMemoDemo from "../pages/useMemoDemo/useMemoDemo";
 
 const RouteProvider = () => {
 
@@ -36,6 +37,10 @@ const RouteProvider = () => {
                 {
                     index: true,
                     element: <CurrentUser />
+                },
+                {
+                    path: "use_memo_demo",
+                    element: <UseMemoDemo />
                 }
             ]
         },
